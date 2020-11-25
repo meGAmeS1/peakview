@@ -15,6 +15,75 @@ The project will be running at http://localhost:1337/
 ## Project info
 The API can be browsed from your web browser or you can used the saved Postman endpoints in the `postman` folder.
 
+## Endpoints
+### List all peaks
+Method: `GET`
+
+URL: `/peaks/`
+
+Info: Will list every peaks in the DB
+
+### Filter peaks 
+Method: `GET`
+
+URL: `/peaks/`
+
+Info: to filter peaks in a given bounding box
+
+Query parameters:
+* in_bbox : `minLon,minLat,maxLon,maxLat`
+
+### Retrieve peak
+Method: `GET`
+
+URL: `/peaks/1/`
+
+### Create peak
+Method: `POST`
+
+URL: `/peaks/`
+
+Data:
+```json
+{
+    "name": "Peak name",
+    "location": {
+        "type": "Point",
+        "coordinates": [
+            1.23046875,
+            2.585444257384886
+        ]
+    },
+    "elevation": 3300.0
+}
+```
+
+### Edit peak
+Method: `PUT`
+
+URL: `/peaks/1/`
+
+Data:
+```json
+{
+    "name": "New peak name",
+    "location": {
+        "type": "Point",
+        "coordinates": [
+            1.23046875,
+            2.585444257384886
+        ]
+    },
+    "elevation": 3300.0
+}
+```
+
+### Delete peak
+Method: `DELETE`
+
+URL: `/peaks/1/`
+
+
 ## Administration
 You'll need a super user for that: `docker-compose -f docker-compose.yml exec web python manage.py createsuperuser`
 
