@@ -15,6 +15,10 @@ The project will be running at http://localhost:1337/
 ## Project info
 The API can be browsed from your web browser or you can used the saved Postman endpoints in the `postman` folder.
 
+The docker stack is launching 3 containers: one for the database (postgreSQL), one for the application (started via gunicorn) and one for the web server (nginx).
+
+The application is made with love and Django (with GeoDjango and Django Rest Framework)
+
 ## Endpoints
 ### List all peaks
 Method: `GET`
