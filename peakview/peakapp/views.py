@@ -10,3 +10,4 @@ class PeakViewSet(viewsets.ModelViewSet):
     bbox_filter_field = 'location'
     filter_backends = (InBBoxFilter,)
     bbox_filter_include_overlapping = True
+
