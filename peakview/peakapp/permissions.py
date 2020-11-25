@@ -33,9 +33,9 @@ class IpFilteringPermission(BasePermission):
                 return True
 
             log = BlockedLog(
-                ip=request.ipinfo.details.get('ip'),
-                city=request.ipinfo.details.get('city'),
-                country=request.ipinfo.details.get('country'),
+                ip=ip_data.details.get('ip'),
+                city=ip_data.details.get('city'),
+                country=ip_data.details.get('country'),
             )
             log.save()
         except Exception:
