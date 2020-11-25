@@ -21,11 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w1(k(a_#^(a_^isrz8i^nu=-aqtvw43nu0j!s+ezp%&&1=s6wg'
+SECRET_KEY = os.environ.get("SECRET_KEY", default='w1(k(a_#^(a_^isrz8i^nu=-aqtvw43nu0j!s+ezp%&&1=s6wg')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = ['*']
 
@@ -82,11 +80,11 @@ WSGI_APPLICATION = 'peakview.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'peakview_db',
-        'USER': 'peakview_user',
-        'PASSWORD': 'secret',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': os.environ.get("SQL_DATABASE", 'peakview_db'),
+        'USER': os.environ.get("SQL_USER", "peakview_user"),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", "secret"),
+        'HOST': os.environ.get("SQL_HOST", "localhost"),
+        'PORT': os.environ.get("SQL_PORT", "5432"),
     }
 }
 
